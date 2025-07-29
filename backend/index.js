@@ -1,10 +1,17 @@
 const express = require('express');
 const app = express();
-// const port = 5000;
+
 const PORT = process.env.PORT || 5000;
 
 const cors = require('cors');
 require('./database/mongoose.js');
+
+
+const Booking = require('./database/bookingg.js'); 
+
+
+
+
 const userdata = require('./schema/UserSchema');
 const Student = require('./schema/Student'); 
 
@@ -63,6 +70,32 @@ app.get('/api/users', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch users', error: err.message });
   }
 });
+app.get('/api/bookings', async (req, res) => {
+  try {
+    const bookings = await Booking.find();
+    res.json(bookings);
+  } catch (err) {
+    console.error("Error fetching bookings:", err);
+    res.status(500).json({ error: "Failed to fetch bookings" });
+  }
+});
+
+
+app.post('/api/bookings', async (req, res) => {
+  try {
+    const bookingDoc = new Booking(req.body);
+    await bookingDoc.save();
+
+    res.status(201).json({
+      message: 'Booking created successfully',
+      booking: bookingDoc
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to create booking', error: err.message });
+  }
+});
+
+
 
 
 
@@ -121,26 +154,24 @@ app.post("/register", async (req, res) => {
 
 app.post('/login', async (req, res) => {
   try {
-    console.log('Login attempt with data:', req.body);
     const { email, password } = req.body;
-    const result = await userdata.find({ email:email, password:password });
-    console.log('Login result:', result);
-    if(result.length == 0){
-      res.status(244).json({ message: 'Invalid email or password' });
-    }
-    else{
-      if(result[0].email === email && result[0].password === password){
-        res.status(200).json({ message: 'Login successful', user: result[0] });
-      }else{
-        res.status(288).json({ message: 'Invalid email or password' });
-      }
 
+    const result = await userdata.find({ email, password });
+
+    if (!result || result.length === 0) {
+      return res.status(401).json({ message: 'Invalid email or password' });
     }
-  }
-  catch(err){
-    console.log(err)
+
+    res.status(200).json({
+      message: 'Login successful',
+      user: result[0]
+    });
+  } catch (err) {
+    console.error("Server error:", err);
+    res.status(500).json({ message: 'Server error during login' });
   }
 });
+
 
 
 // app.listen(port, () => {
@@ -195,65 +226,3 @@ app.listen(5000, () => {
 
 
 
-// const express = require('express')
-// const app = express()
-// const port = 3500
-// const cors = require('cors')
-// require('./database/mongoose.js')
-
-// app.use(cors())
-// app.use(express.json())
-
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
-
-// app.get('/api/students', (req, res) => {
-//   const students = [
-//     { rollno: 1, name: 'Priyanka', class: 'B.Tech' },
-//     { rollno: 2, name: 'Avni agrawal', class: 'B.Com' },
-//     { rollno: 3, name: 'Anushka Tripathi', class: 'BBA' }
-//   ];
-//   res.json(students);
-// }
-// );
-
-// // app.post('/register', (req, res) => {
-// //  try{
-// //   console.log(req.body);
-// //  }catch(e){
-// //   console.log(e);
-// //  }
-  
-// // });
-
-// app.post('/api/students', (req, res) => {
-//   const newStudent = req.body;
-//   console.log('Received new student:', newStudent);
-
-  
-//   if (!newStudent.rollno || !newStudent.name || !newStudent.class) {
-//     return res.status(400).json({
-//       message: 'Missing required fields: rollno, name, and class',
-//     });
-//   }
-
-  
-
-//   res.status(201).json({
-//     message: 'Student registered successfully',
-//     student: newStudent
-//   });
-// });
-
-
-
-// app.listen(port, () => {
-//   console.log(`Server listening at http://localhost:${port}`);
-// });
-
-
-
-
-
- 

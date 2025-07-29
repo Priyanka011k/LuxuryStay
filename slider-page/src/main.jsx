@@ -28,31 +28,22 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<LandingPage />}>
-        <Route index element={<HomePage />} />
-        <Route path="about" element={<AboutUsPage />} />
-        <Route path="contact" element={<ContactUsPage />} />
-        <Route path="slider" element={<SliderPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="restaurants" element={<RestaurantList />} />
-        <Route path="/admin" element={<AdminPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/admin/bookings" element={<BookingsPage />} />
-        {/* <Route path="/admin/rooms" element={<RoomsPage />} /> */}
-        <Route path="/admin/users" element={<UsersPage />} />
-        <Route path="/admin/rooms/view" element={<ViewRooms />} />
+  <Route path="/" element={<LandingPage />}>
+    <Route index element={<HomePage />} />
+    <Route path="about" element={<AboutUsPage />} />
+    <Route path="contact" element={<ContactUsPage />} />
+    <Route path="slider" element={<SliderPage />} />
+    <Route path="register" element={<RegisterPage />} />
+    <Route path="restaurants" element={<RestaurantList />} />
+  </Route>
 
-        <Route path="/admin/rooms/edit/:id" element={<RoomEditForm />} />
+  <Route path="/login" element={<LoginPage />} />
+  <Route path="/admin" element={<AdminPage />} />
+  <Route path="/admin/bookings" element={<BookingsPage />} />
+  <Route path="/admin/users" element={<UsersPage />} />
+  <Route path="/admin/rooms/view" element={<ViewRooms />} />
+  <Route path="/admin/rooms/edit/:id" element={<RoomEditForm />} />
+</Routes>
 
-        {/* <Route path="/api" element={<ApiPage />} /> */}
-        
-
-
-        
-
-
-      </Route>
-      
-    </Routes>
   </BrowserRouter>
 );
