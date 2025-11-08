@@ -1,0 +1,187 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+ 
+.form-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background: linear-gradient(to bottom right, #fff8f0, #fde6d3);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.form-heading {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #9c28a0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #5d4037;
+  font-weight: 500;
+}
+
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+
+.form-group input:focus {
+  border-color: #9c28a0;
+  outline: none;
+}
+
+
+.input-error {
+  border-color: #9c28a0;
+  background-color: #fceae9;
+}
+
+.error-msg {
+  color: #9c28a0;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+
+.info-msg {
+  text-align: center;
+  color: #2980b9;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+
+input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #c54fc9;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+  background-color: #9c28a0;
+}
+
+input[type="submit"]:disabled {
+  background-color: #dd7ce0;
+  cursor: not-allowed;
+}
+
+
+.container {
+  padding-bottom: 40px;
+}
+
+
+h2 {
+  font-weight: 700;
+  color: #9c28a0;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.card {
+  border: none;
+  border-radius: 12px;
+  background-color: #fffdf8;
+}
+
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #34495e;
+}
+
+
+.card-body p {
+  font-size: 1rem;
+  color: #5d4037;
+  margin-bottom: 8px;
+}
+
+
+.form-label {
+  font-weight: 500;
+  color: #7f8c8d;
+}
+
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #9c28a0;
+  box-shadow: none;
+}
+
+
+.btn-primary {
+  background-color: #9c28a0;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #9c28a0;
+}
+
+.about-img {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+
